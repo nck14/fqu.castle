@@ -77,7 +77,7 @@ const scannedRoom = function(y, x)
 	scanned_room[y][x] = room_num;
 }
 
-const roomScanner = function(_sy, _sx, prevDirect)
+const roomScanner = function(_sy, _sx, prev_direct)
 {
 	// 스캔
 	scannedRoom(_sy, _sx);
@@ -85,9 +85,9 @@ const roomScanner = function(_sy, _sx, prevDirect)
 	let room_direct = checkRoom(input_room, _sy, _sx);
 	
 	// 전 들렸던 방 삭제
-	if(prevDirect)
+	if(prev_direct)
 	{
-		const idx = room_direct.indexOf(prevDirect);
+		const idx = room_direct.indexOf(prev_direct);
 		if(idx > -1) room_direct.splice(idx, 1);
 	}
 
@@ -149,9 +149,6 @@ const main = function()
 		}
 	}
 
-	console.log('성 방의 갯수:', room_num);
-	console.log('각 성의 방 갯수:', scanned_room_count);
-	// console.log(scanned_room);
 
 	let y, x;
 	let max_scanned_room_count = 0;
@@ -187,8 +184,10 @@ const main = function()
 		}
 	}
 
-	// console.log(wall);
-	console.log('벽 제거 후 넓은 방', max_scanned_room_count);
+	console.log('성 방의 갯수:', room_num);
+	console.log('각 성의 방 갯수:', scanned_room_count);
+	console.log('벽 제거 후 넓은 방:', max_scanned_room_count);
+	console.log('성 스캔:', scanned_room);
 }
 
 main();
